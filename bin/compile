@@ -31,15 +31,3 @@ cp -R "$VENDOR_DIR/boost" "/app/vendor/boost"
 
 set-default-env LD_LIBRARY_PATH "boost/stage/lib"
 set-default-env LIBRARY_PATH "boost/stage/lib"
-
-
-echo "-----> Fetching and vendoring vowpal wabbit"
-curl "https://s3.amazonaws.com/opendoor-deps/vowpal_wabbit_heroku.tar.gz" -s -o - | tar xzf - -C "$VENDOR_DIR"
-mv "$VENDOR_DIR/vowpal_wabbit/vowpalwabbit" "$VENDOR_DIR/vowpalwabbit"
-cp -R "$VENDOR_DIR/vowpalwabbit" "/app/vendor/vowpalwabbit"
-
-set-default-env LD_LIBRARY_PATH "vowpalwabbit/.libs"
-set-default-env LIBRARY_PATH "vowpalwabbit/.libs"
-set-default-env PATH "vowpalwabbit"
-
-alias vw=/app/vendor/vowpalwabbit/vw
